@@ -47,7 +47,7 @@ def unlock_mi8(d2):
 def open_weixin():
     os.system('adb shell am force-stop com.tencent.mm')
     os.system('adb shell am start com.tencent.mm/.ui.LauncherUI')
-    print '微信已重启'
+    logger.info('微信已重启')
 
 
 #初始化H5Driver

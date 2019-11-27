@@ -61,9 +61,9 @@ def send_email():
     ret = mail(os.path.join(basic_path, report), report)
 
     if ret:
-        print '邮件发送成功'
+        print('邮件发送成功')
     else:
-        print '邮件发送失败'
+        print('邮件发送失败')
 
 
 

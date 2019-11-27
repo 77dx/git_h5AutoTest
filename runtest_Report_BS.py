@@ -18,7 +18,6 @@ def run():
     with open(report_name, 'wb') as f:
         runner = BSTestRunner(stream=f, title='Test Report' + ' Flins', description='H5')
         runner.run(discover)
-        print runner
     f.close()
 
 
