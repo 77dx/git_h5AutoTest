@@ -27,12 +27,9 @@ class TestThyroid(unittest.TestCase):
             self.result()
 
     def index(self):
-        try:
-            self.t.index()       # 首页
-            self.t.evaluation()  # 做测评
-            self.t.eva_result()  # 测评结果页
-        except Exception as e:
-            logger.error('系统异常')
+        self.t.index()       # 首页
+        self.t.evaluation()  # 做测评
+        self.t.eva_result()  # 测评结果页
 
     def result(self):
         becomeMember().action()   #数据库插入数据，用户是会员，可以直接上传B超

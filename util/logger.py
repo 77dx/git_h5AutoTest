@@ -18,7 +18,9 @@ class Logger(object):
 
         # 创建一个handler，用于写入日志文件
         rq = time.strftime("%Y-%m-%d %H_%M_%S",time.localtime(time.time()))
-        log_path = 'E:\git_repo\Test_Weixin\logs/'
+        curPath = os.path.abspath(os.path.dirname(__file__))
+        rootPath = curPath[:curPath.find("git_h5AutoTest\\") + len("git_h5AutoTest\\")]
+        log_path = rootPath + 'logs/'
         log_name = log_path + rq + '.log'
         print log_name
         fh = logging.FileHandler(log_name)
@@ -42,7 +44,6 @@ class Logger(object):
 
 
 if __name__ == '__main__':
-    # logger = 'test'
-    # l = Logger(logger)
-    path = os.path.abspath(os.path.dirname(__file__)).split('Test_Weixin')[0]
-    print path
+    logger = 'test'
+    l = Logger(logger)
+
