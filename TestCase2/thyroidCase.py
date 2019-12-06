@@ -16,47 +16,56 @@ class ThyroidCase():
 
     # 首页
     def index(self):
-        self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div/a')
-        logger.info('查看用户使用协议')
-        self.h5Driver.scrollToElementByXpath('//*[@id="app"]/div/div/div[77]')
-        # 返回上一页
-        self.h5Driver.returnLastPage()
-        # 点击同意协议
-        self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[2]/label')
-        logger.info('同意用户协议')
-        # 点击去测评
-        self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/a')
-        logger.info('点击测评')
+        if self.h5Driver.isElementExist('//*[@id="app"]/div/div/a'):
+            self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div/a')
+            logger.info('查看用户使用协议')
+            self.h5Driver.scrollToElementByXpath('//*[@id="app"]/div/div/div[77]')
+            # 返回上一页
+            self.h5Driver.returnLastPage()
+            # 点击同意协议
+            self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[2]/label')
+            logger.info('同意用户协议')
+            # 点击去测评
+            self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/a')
+            logger.info('点击测评')
+        else:
+            raise Exception('出现异常，无法进入首页')
 
     # 做测评
     def evaluation(self):
-        # 做问卷题目
-        self.h5Driver.clickElementByXpath('//*[@id="box"]/div/div[3]/div[2]/a[1]')  # 选择男性
-        self.h5Driver.wait(1)  # 等待1s
-        self.h5Driver.textElementByXpath('//*[@id="divHeight"]/div[2]/div[2]/div/div[2]/input', '185')  # 输入身高185
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[2]/div[2]/div/div[2]/label[2]')
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[3]/div[2]/div/a[1]')  # 选择<40岁
-        self.h5Driver.textElementByXpath('//*[@id="divHeight"]/div[4]/div[2]/div/div[2]/input', '70')  # 输入体重70
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[4]/div[2]/div/div[2]/label[2]')
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[5]/div[2]/div/a[1]')  # 选择北上广
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[6]/div[2]/div/a[1]')  # 选择大专、本科
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[7]/div[2]/div/a[3]')
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[7]/div[2]/div/label')  # 没有或者不知道
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[8]/div[2]/div/a[1]')
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[8]/div[2]/div/label')  # 父母子女
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[9]/div[2]/div/a[3]')
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[9]/div[2]/div/label')  # 以上都没有
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[10]/div[2]/div/a[2]')  # 没有或者不知道
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[11]/div[2]/div/a[2]')  # 没有或者不知道
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[12]/div[2]/div/a[2]')  # 有
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[13]/div[2]/div/a[5]')
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[13]/div[2]/div/label')  # 我是乐天派
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[14]/div[2]/div/a[1]')  # 压力山大
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[15]/div[2]/div/a[2]')  # 特立独行
-        self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[16]/div[2]/div/a[2]')  # 没兴趣
-        # 提交问卷
-        self.h5Driver.clickElementByXpath('//*[@id="box"]/div/div[5]/div/div[2]/a')  # 提交
-        logger.info('提交问卷')
+        if self.h5Driver.isElementExist('//*[@id="box"]/div/div[1]/label'):              #判断是否进入问题页面
+            # 做问卷题目
+            self.h5Driver.wait(1)
+            self.h5Driver.clickElementByXpath('//*[@id="box"]/div/div[3]/div[2]/a[1]')  # 选择男性
+            self.h5Driver.wait(1)  # 等待1s
+            self.h5Driver.textElementByXpath('//*[@id="divHeight"]/div[2]/div[2]/div/div[2]/input', '185')  # 输入身高185
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[2]/div[2]/div/div[2]/label[2]')
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[3]/div[2]/div/a[1]')  # 选择<40岁
+            self.h5Driver.textElementByXpath('//*[@id="divHeight"]/div[4]/div[2]/div/div[2]/input', '70')  # 输入体重70
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[4]/div[2]/div/div[2]/label[2]')
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[5]/div[2]/div/a[1]')  # 选择北上广
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[6]/div[2]/div/a[1]')  # 选择大专、本科
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[7]/div[2]/div/a[3]')
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[7]/div[2]/div/label')  # 没有或者不知道
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[8]/div[2]/div/a[1]')
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[8]/div[2]/div/label')  # 父母子女
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[9]/div[2]/div/a[3]')
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[9]/div[2]/div/label')  # 以上都没有
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[10]/div[2]/div/a[2]')  # 没有或者不知道
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[11]/div[2]/div/a[2]')  # 没有或者不知道
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[12]/div[2]/div/a[2]')  # 有
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[13]/div[2]/div/a[5]')
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[13]/div[2]/div/label')  # 我是乐天派
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[14]/div[2]/div/a[1]')  # 压力山大
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[15]/div[2]/div/a[2]')  # 特立独行
+            self.h5Driver.clickElementByXpath('//*[@id="divHeight"]/div[16]/div[2]/div/a[2]')  # 没兴趣
+            # 提交问卷
+            self.h5Driver.clickElementByXpath('//*[@id="box"]/div/div[5]/div/div[2]/a')  # 提交
+            logger.info('提交问卷')
+        else:
+            raise Exception('出现异常，无法进入问卷题目页')
+
+
 
     # 问卷结果页
     def eva_result(self):
@@ -167,25 +176,36 @@ class ThyroidCase():
 
     # 上传B超报告
     def B_report(self, d2):
-        try:
+        if self.h5Driver.isElementExist('//*[@id="app"]/div/div[3]/label'):     # 判断是否有超声评估按钮
             self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div[3]/label')  # 点击超声评估
-            self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[2]/div[1]/span')  # 详情示范
-            logger.info('点击详情示范')
-            self.h5Driver.scrollToElementByXpath('//*[@id="app"]/div/div[12]/label')
-            self.h5Driver.returnLastPage()  # 返回上一页
-            # 上传图片
-            self.h5Driver.clickElementByXpath('//*[@id="file"]')
-            d2(resourceId="android:id/icon", className="android.widget.ImageView", instance=1).click()  # 文件
-            sleep(5)
-            d2(resourceId="com.android.documentsui:id/icon_thumb").click()  # mi9选择图片
-            self.h5Driver.wait(5)  # 等待5s
-            self.h5Driver.clickElementByXpath('//*[@id="checkTimeStr"]')
-            self.h5Driver.clickElementByXpath(
-                '/html/body/div[6]/div/div[2]/div[2]/div/div[2]/div[1]/div[3]/span')  # 选择体检时间
-            # 提交报告
-            self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[3]/div[2]')
-            self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[4]')  # 点击提交
-            logger.info('B超报告提交成功')
-        except:
-            logger.error('系统异常，未进入结果页')
+            if self.h5Driver.isElementExist('//*[@id="app"]/div/div/div[1]/div[1]/label'):    # 判断是否进入上传图片页面
+                self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[2]/div[1]/span')  # 详情示范
+                logger.info('点击详情示范')
+                self.h5Driver.scrollToElementByXpath('//*[@id="app"]/div/div[12]/label')
+                self.h5Driver.returnLastPage()  # 返回上一页
+                # 上传图片
+                self.h5Driver.clickElementByXpath('//*[@id="file"]')
+                d2(resourceId="android:id/icon", className="android.widget.ImageView", instance=1).click()  # 文件
+                sleep(5)
+                d2(resourceId="com.android.documentsui:id/icon_thumb").click()  # mi9选择图片
+                self.h5Driver.wait(5)  # 等待5s
+                self.h5Driver.clickElementByXpath('//*[@id="checkTimeStr"]')
+                self.h5Driver.clickElementByXpath(
+                    '/html/body/div[6]/div/div[2]/div[2]/div/div[2]/div[1]/div[3]/span')  # 选择体检时间
+                # 提交报告
+                self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[3]/div[2]')
+                self.h5Driver.clickElementByXpath('//*[@id="app"]/div/div/div[4]')  # 点击提交
+                if self.h5Driver.isElementExist('//*[@id="app"]/div/div/div[1]/div[1]/label'):      #判断图片是否上传成功
+                    logger.error('B超报告提交失败')
+                else:
+                    logger.info('B超上传成功')
+        else:
+            raise Exception('系统异常，未进入结果页')
 
+
+if __name__ == '__main__':
+    import uiautomator2
+    d2 = uiautomator2.connect_usb()
+    h5Driver = 2
+    t = ThyroidCase(h5Driver)
+    t.authorization(d2)

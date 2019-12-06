@@ -1,0 +1,9 @@
+2019-12-05 14:50:50,796 - LoginPage - INFO - 微信已重启
+2019-12-05 14:50:50,898 - LoginPage - INFO - uiautomator2初始化完成
+2019-12-05 14:51:08,901 - LoginPage - INFO - Loading Finished
+2019-12-05 14:51:08,901 - LoginPage - INFO - Test start...
+2019-12-05 14:51:15,193 - LoginPage - INFO - 未做测评，开始测评
+2019-12-05 14:51:15,980 - ThyroidPage - INFO - 查看用户使用协议
+2019-12-05 14:51:33,536 - ThyroidPage - INFO - 同意用户协议
+2019-12-05 14:51:34,450 - ThyroidPage - INFO - 点击测评
+2019-12-05 14:51:40,571 - LoginPage - INFO - Test End bye ~ 
